@@ -6,15 +6,14 @@ class Input extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      value: '',
       valid: false,
       focused: false
     }
   }
 
   handleUserInput ({target: {type, value}}) {
+    this.props.onChange(value)
     this.setState({
-        value,
         focused: true
       },
       () => {
@@ -46,14 +45,13 @@ class Input extends React.Component {
   }
 
   render () {
-    const {name, placeholder, icon, invalidMessage} = this.props
-    const {value, valid} = this.state
+    const {name, placeholder, icon, invalidMessage, value} = this.props
     return (
       <div className={styles.inputContainer}>
         <input type={name} className={this.getStyleForInput()} placeholder={placeholder} value={value}
-               onChange={(event) => this.handleUserInput(event)} autoComplete='new-password'/>
+               onChange={this.handleUserInput.bind(this)} autoComplete='new-password'/>
         <img src={icon} alt={name} className={styles.icon}/>
-        <span className={styles.checkMark} style={{display: valid ? 'flex' : 'none'}}>&#x2714;</span>
+        <span className={styles.checkMark} style={{display: this.state.valid ? 'flex' : 'none'}}>&#x2714;</span>
         <span className={styles.incorrect} style={{display: this.displayMarks()}}>&#x2716;</span>
         <p className={styles.incorrectText} style={{display: this.displayMarks()}}>{invalidMessage}</p>
       </div>

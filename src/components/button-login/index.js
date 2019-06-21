@@ -1,12 +1,6 @@
-import React from 'react'
+import React, {Component} from 'react'
 import styles from './index.styl'
 
-class ButtonLogin extends React.Component{
-  render(){
-    return(
-      <button className={styles.login}>Login</button>
-    )
-  }
-}
+const ButtonLogin = ({onClick}) => <button onClick={onClick} className={styles.login}>Login</button>
 
 export default ButtonLogin
