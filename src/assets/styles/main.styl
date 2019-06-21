@@ -13,17 +13,12 @@
   margin-bottom 34px
 
   .input-valid
-    width 100%
-    height 100%
-    border 1px solid $green-color
-    background-color $white-color
-    border-radius 5px
-    letter-spacing -0.14px
-    padding 10px 40px
-    color $gray-color-dark
+    &:focus
+      border 1px solid $green-color
 
 
-  .input, .input-noValid
+
+  .input, .input-noValid, .input-valid
     width 100%
     height 100%
     border 1px solid $gray-color
